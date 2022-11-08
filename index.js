@@ -4,6 +4,9 @@ let itemList=document.getElementById('items')
 //adding an event listener to the form submission
 form.addEventListener('submit',addItem)
 
+//adding an event listener for delete
+itemList.addEventListener('click',removeItem)
+
 function addItem(e)
 {
     e.preventDefault()
@@ -21,8 +24,34 @@ function addItem(e)
     //adding a text node to the li with the input value
     li.appendChild(document.createTextNode(newItem))
 
+    //creating a delete button
+    let delBtn=document.createElement('button')
+
+    //adding class name
+    delBtn.className="btn btn-danger btn-sm float-right delete"
+
+    //adding a text node to the delete button for the symbol of delete button
+    delBtn.appendChild(document.createTextNode('X'))
+
+    //adding it to the li
+    li.appendChild(delBtn)
+
     //adding li to the list of items
     itemList.appendChild(li)
 
 
+}
+
+function removeItem(e)
+{
+    e.preventDefault()
+    //check if the class contains delete
+    if(e.target.classList.contains='delete')
+    {
+        if(confirm('Are you sure?'))
+        {
+            let li=e.target.parentElement //since we have to delete it's parentElement . In this case it's the li
+            itemList.removeChild(li) //li is the child of ul
+        }
+    }
 }
