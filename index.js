@@ -39,7 +39,7 @@ function addItem(e)
     //adding li to the list of items
     itemList.appendChild(li)
 
-
+    
 }
 
 function removeItem(e)
@@ -54,4 +54,17 @@ function removeItem(e)
             itemList.removeChild(li) //li is the child of ul
         }
     }
+}
+
+ 
+ //let listGroup=document.querySelector("ul .list-group-item")
+
+let b=document.querySelectorAll("li")
+
+for(let i=0;i<b.length;i++)
+{
+    let edit=document.createElement('button')
+    edit.className="btn btn-dark btn-sm float-right edit"
+    edit.appendChild(document.createTextNode('edit'))
+    b[i].insertAdjacentElement("afterbegin",edit)
 }
